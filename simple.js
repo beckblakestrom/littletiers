@@ -12,26 +12,18 @@ const db = new Low(adapter);
 // Read data from JSON file, this will set db.data content
 await db.read();
 
-// init the data store
+// If file.json doesn't exist, db.data will be null
+// Set default data
 db.data ||= { posts: [] };
+// db.data = db.data || { posts: [] } // for node < v15.x
 
-// add post
-// ----------------------------
+// Create and query items using plain JS
 db.data.posts.push("hello world");
 db.data.posts[0];
 
-// count posts
-// ----------------------------
-// YOUR CODE
+// You can also use this syntax if you prefer
+const { posts } = db.data;
+posts.push("hello world");
 
-// find all posts ids
-// ----------------------------
-// YOUR CODE
-
-// all matches of published false
-// ----------------------------
-// YOUR CODE
-
-// find post with published false
-// ----------------------------
-// YOUR CODE
+// Write db.data content to db.json
+await db.write();
