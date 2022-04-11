@@ -1,11 +1,10 @@
-var low     = require('lowdb');
-var fs      = require('lowdb/adapters/FileSync');
-var adapter = new fs('db.json');
-var db      = low(adapter);
+var low = require("lowdb");
+var fs = require("lowdb/adapters/FileSync");
+var adapter = new fs("db.json");
+var db = low(adapter);
 
 // init the data store
-// ---------------------------
-// YOUR CODE
+db.data ||= { posts: [] };
 
 // add post
 // ----------------------------
